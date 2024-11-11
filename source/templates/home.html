@@ -8,14 +8,15 @@
                 <!-- Hit counter displayed in the corner -->
                <div class="hit-counter">{{ property.hit_counter }} 👁️</div>
                 <div class="property-image">
-
+                <!-- Poglądowo wstawione na sztywno -->
+                    <img src="../static/images/kam-idris-_HqHX3LBN18-unsplash.jpg" alt="pomieszczenie"> 
                 </div>
                 <!-- Property details -->
                 <div class="property-details">
                     <h2>{{ property.title }}</h2>
                     <p class="location">{{ property.location }}</p>
                     <!-- dodanie metrazu -->
-                    <p class="area">{{ property.location }} m²</p>
+                    <p class="area">280 m²</p>
                 </div>
                 <p class="price-text">{{ property.price }}</p>
                 <a href="{{ url_for('property_detail', property_id=property.id) }}" class="button">SZCZEGÓŁY OFERTY</a>

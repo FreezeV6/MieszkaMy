@@ -1,12 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h2>{{ property.title }}</h2>
-    <p><strong>Location:</strong> {{ property.location }}</p>
-    <p><strong>Price:</strong> {{ property.price }}</p>
-    <p><strong>Description:</strong> {{ property.description }}</p>
 
-    <p><strong>View Count:</strong> {{ property.hit_counter }}</p>
+    <div class="container">
+        <div class="image-container">
+         <!-- Poglądowo wstawione na sztywno -->
+            <img src="../static/images/kam-idris-_HqHX3LBN18-unsplash.jpg" alt="pomieszczenie">
+        </div>
+        <div class="about">
+            <div>
+            <p class="title">{{ property.title }}</p>
+            <p class="location-description">{{ property.location }}</p>
+            <p class="area-description"> 300 m²</p>
+            </div>
+            <p class="description">{{ property.description }}</p>
+            <div>
+            <p class="price-description"><strong>{{ property.price }}</strong> /miesięcznie</p>
+            <a href="{{ url_for('signup') }}" class="button-description">SKONTAKTUJ SIĘ Z NAMI</a>
+            </div>
+        </div>
+        
+    </div>
 
-    <a href="{{ url_for('signup') }}" class="button">Contact an Agent</a>
+
 {% endblock %}

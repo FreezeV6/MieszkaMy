@@ -82,17 +82,22 @@ p {
     padding: 0;
     /* border: 1px solid #ddd; */
     border-radius: 16px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    box-shadow: 0px 190px 76px rgba(0, 0, 0, 0.01), 0px 107px 64px rgba(0, 0, 0, 0.05), 0px 47px 47px rgba(0, 0, 0, 0.09), 0px 12px 26px rgba(0, 0, 0, 0.1);
     overflow: hidden;
 }
 
 .property-image {
     background-color: antiquewhite;
-    height: 250px;  /* Jeśli chcesz określoną wysokość */
+    height: 250px;  
     margin: 0;
-    padding: 0;  /* Zerowanie paddingu */
+    padding: 0;  
     display: flex;
-    align-items: flex-start;  /* Wyrównanie elementów do góry */
+}
+.property-image img {
+    width: 100%; 
+    height: auto; 
+    display: block; 
 }
 
 .property-details {
@@ -137,9 +142,14 @@ p {
     padding: 0;  
     text-align: right;
 }
+/* Card */
+
+
+
 
 .hit-counter {
     position: absolute;
+    font-family: 'Inter' ,sans-serif;
     top: 8px;
     right: 8px;
     background-color: var(--base100);  /* Choose a color that stands out */
@@ -203,4 +213,107 @@ button:hover {
     background-color: #DC3217;
 }
 
+/* PROPERTY.HTML */
+.container {
+    display: flex;
+    flex-direction: row;
+    gap: 56px;
+    align-items: center;
+    margin-top: 48px;
+}
+
+.image-container {
+    overflow: hidden;
+    align-items: center;
+    width: 800px;
+    height: 600px;
+    border-radius: 24px;
+    background-color: #0056b3;
+}
+.image-container img {
+    width: 100%; 
+    height: auto; 
+    display: block; 
+}
+
+.about {
+    width: 550px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.title {
+
+    font-family: 'Inter' ,sans-serif;
+    font-weight:500;
+    font-size: 48px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: var(--secondary-color);
+
+}
+
+.location-description {
+    font-family: 'Inter' ,sans-serif;
+    font-weight:500;
+    font-size: 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: var(--base800);
+    margin-top: 32px;
+}
+
+.area-description{
+    font-family: 'Inter' ,sans-serif;
+    font-weight:500;
+    font-size: 16px;
+    text-decoration: none;
+    color: var(--base500);
+    margin-top: 8px;
+}
+
+.description{
+    height: 200px;
+    font-family: 'Inter' ,sans-serif;
+    font-weight:400;
+    font-size: 16px;
+    text-decoration: none;
+    color: var(--base600);
+    margin-top: 32px;
+
+}
+
+.price-description{
+    font-family: 'Inter' ,sans-serif;
+    font-weight:300;
+    font-size: 24px;
+    text-decoration: none;
+    color: var(--base600);
+    margin-top: 40px;
+}
+
+strong{
+    font-family: 'Inter' ,sans-serif;
+    color: var(--base800);
+    font-size: 32px;
+}
+.button-description {
+    font-family: "Inter";
+    font-size: 12px;
+    width: 80%;
+    display: block;
+    padding: 16px;
+    background-color: var(--secondary-color);
+    color: var(--base100);
+    border-radius: 24px;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 40px;
+}
+
+.button-description:hover {
+    background-color: #DC3217;
+}
 
