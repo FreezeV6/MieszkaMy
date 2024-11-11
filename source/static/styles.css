@@ -2,7 +2,7 @@
 @import url('/static/fonts.css');
 
 body {
-    background-color: var(--base100);
+    background-color: var(--background-color);
     margin: 0;
     overflow: overlay;
     margin-bottom: 64px;
@@ -183,17 +183,6 @@ label, input, textarea, button {
     font-size: 1em;
 }
 
-button {
-    padding: 0.5em;
-    background-color: var(--primary-color);
-    color: var(--base100);
-    border: none;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
 
 .button {
     font-family: "Inter";
@@ -228,7 +217,6 @@ button:hover {
     width: 800px;
     height: 600px;
     border-radius: 24px;
-    background-color: #0056b3;
 }
 .image-container img {
     width: 100%; 
@@ -242,6 +230,7 @@ button:hover {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
 }
 
 .title {
@@ -301,7 +290,7 @@ strong{
 }
 .button-description {
     font-family: "Inter";
-    font-size: 12px;
+    font-size: 16px;
     width: 80%;
     display: block;
     padding: 16px;
@@ -317,3 +306,83 @@ strong{
     background-color: #DC3217;
 }
 
+
+
+/* SIGNUP */
+
+form {
+    max-width: 550px; 
+    margin-top: 32px; 
+    padding: 0; 
+  }
+  
+.form-group {
+    display: flex;
+    flex-wrap: wrap; 
+    margin-bottom: 4px;
+    justify-content: space-between;
+    gap: 24px;
+    width: 100%; 
+  }
+  
+  input {
+    flex-grow: 1; 
+    width: 200px;
+    border-radius: 16px;
+    border: 2px solid var(--base300);
+    padding: 12px;
+    color: var(--base800); 
+    font-family: "Inter"; 
+    box-shadow: none;
+
+  }
+
+  textarea{
+    width: 100%; 
+    min-height: 164px;  
+    height: 200px;  
+    border-radius: 16px;
+    border: 2px solid var(--base300);
+    padding: 8px;
+    color: var(--base800);
+    font-family: "Inter";
+    box-shadow: none;
+  }
+  
+  input:focus, textarea:focus {
+    outline: none; /* Usunięcie obramowania przy fokusie */
+    border-color: var(--secondary-color); /* Kolor obramowania podczas fokusowania */
+  }
+  
+  input::placeholder, textarea::placeholder {
+    font-family: "Inter";
+    color: var(--base300);
+  }
+
+  .contact-description {
+    font-family: "Inter";
+    font-size: 16px;
+    color: var(--base500);
+    margin-top: 16px;
+  }
+  
+  button {
+    font-family: "Inter";
+    font-size: 16px;
+    width: 100%;
+    display: block;
+    padding: 16px;
+    background-color: var(--secondary-color);
+    color: var(--base100);
+    border-radius: 24px;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 40px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #DC3217;
+
+}
