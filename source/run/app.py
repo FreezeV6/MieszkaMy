@@ -39,21 +39,30 @@ def increment_hit_counter(property_id):
     return redirect(url_for('property_detail', property_id=property_id))
 
 
-# Signup form route
-@app.route('/signup', methods=['GET', 'POST'])
-def signup():
+# Signup form route (property_id is optional)
+@app.route('/signup', defaults={'property_id': None}, methods=['GET', 'POST'])
+@app.route('/signup/<int:property_id>', methods=['GET', 'POST'])
+def signup(property_id):
+    property_id = request.form.get('property_id') or property_id
     if request.method == 'POST':
         name = request.form['name']
+        surname = request.form['surname']
         email = request.form['email']
         phone = request.form['phone']
         message = request.form['message']
 
-        # Save inquiry to the database
-        new_inquiry = Inquiry(name=name, email=email, phone=phone, message=message)
+        # Save inquiry to the database with or without property_id
+        new_inquiry = Inquiry(name=name, surname=surname, email=email, phone=phone, message=message, property_id=property_id)
         db.session.add(new_inquiry)
         db.session.commit()
 
         flash('Thank you for signing up! An agent will contact you soon.', 'success')
-        return redirect(url_for('home'))
+        return redirect(url_for('home')) # zmienic to na confirm
 
-    return render_template('signup.html')
+    return render_template('signup.html', property_id=property_id)
+
+
+# dodac signup confirm page, jak jest zwrotka 200
+@app.route('/signup/confirm')
+def confirm():
+    return render_template('signup_confirm.html')
