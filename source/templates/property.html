@@ -11,12 +11,12 @@
             <div>
             <p class="title">{{ property.title }}</p>
             <p class="location-description">{{ property.prop_location }}</p>
-            <p class="area-description"> 300 m²</p>
+            <p class="area-description">{{ property.property_area }} m²</p>
             </div>
             <p class="description">{{ property.description }}</p>
             <div>
             <p class="price-description"><strong>{{ property.price }}</strong> /miesięcznie</p>
-            <a href="{{ url_for('signup') }}" class="button-description">SKONTAKTUJ SIĘ Z NAMI</a>
+            <a href="{{ url_for('signup', property_id = property.property_id) }}" class="button-description">SKONTAKTUJ SIĘ Z NAMI</a>
             </div>
         </div>
         

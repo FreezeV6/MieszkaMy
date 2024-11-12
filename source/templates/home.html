@@ -16,7 +16,7 @@
                     <h2>{{ property.title }}</h2>
                     <p class="location">{{ property.prop_location }}</p>
                     <!-- dodanie metrazu -->
-                    <p class="area">280 m²</p>
+                    <p class="area">{{ property.property_area }} m²</p>
                 </div>
                 <p class="price-text">{{ property.price }}</p>
                 <a href="{{ url_for('property_detail', property_id=property.property_id) }}" class="button">SZCZEGÓŁY OFERTY</a>
