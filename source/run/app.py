@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 from source.database.db_init import db
 from source.models.Property import Property
 from source.models.Inquiry import Inquiry
-from source.add_data.add_properties import add_properties
 from source.utils.consts import TEMPLATE_DIR, STATIC_DIR, DB_PATH, KEY
 
 app = Flask(__name__, template_folder=TEMPLATE_DIR, static_folder=STATIC_DIR)
