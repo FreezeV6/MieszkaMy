@@ -1,4 +1,3 @@
-import os
 from flask import Flask, render_template, request, redirect, url_for, flash
 from source.database.db_init import db
 from source.models.Property import Property
@@ -9,17 +8,10 @@ from source.utils.consts import TEMPLATE_DIR, STATIC_DIR, DB_PATH, KEY
 app = Flask(__name__, template_folder=TEMPLATE_DIR, static_folder=STATIC_DIR)
 app.secret_key = KEY
 
-# Ensure the database folder exists
-os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
-
-app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_PATH}'
+app.config['SQLALCHEMY_DATABASE_URI'] = DB_PATH
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
-
-with app.app_context():
-    db.create_all()
-    add_properties()
 
 # Home route: Shows all listings
 @app.route('/')
