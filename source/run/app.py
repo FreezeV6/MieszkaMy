@@ -1,4 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
+from sqlalchemy.sql.sqltypes import NULLTYPE
+
 from source.database.db_init import db
 from source.models.Property import Property
 from source.models.Inquiry import Inquiry
@@ -40,7 +42,7 @@ def increment_hit_counter(property_id):
 
 
 # Signup form route (property_id is optional)
-@app.route('/signup', defaults={'property_id': None}, methods=['GET', 'POST'])
+@app.route('/signup', defaults={'property_id': NULLTYPE}, methods=['GET', 'POST'])
 @app.route('/signup/<int:property_id>', methods=['GET', 'POST'])
 def signup(property_id):
     property_id = request.form.get('property_id') or property_id
