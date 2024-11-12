@@ -11,7 +11,8 @@
       <div>
         <p class="title">KONTAKT</p>
         <p class="contact-description">Skontaktuj się z nami, a my niezwłocznie odpowiemy i umówimy dogodny termin wizyty.</p>
-        <form action="{{ url_for('signup') }}" method="post">
+        <form action="{{ url_for('signup', property_id=property.property_id if property else None) }}" method="post">
+          <input type="hidden" name="property_id" value="{{ property_id }}">
           <div class="form-group">
             <input
               type="text"
@@ -45,19 +46,18 @@
               placeholder="Telefon"
               required
             />
-           
+
           </div>
 
           <div class="form-group">
             <textarea
               id="message"
               name="message"
-              placeholder="Widaomość"
+              placeholder="Wiadomość"
             ></textarea>
           </div>
-
-        </form>
           <button type="submit">WYŚLIJ WIADOMOŚĆ</button>
+        </form>
       </div>
     </div>
   </div>
