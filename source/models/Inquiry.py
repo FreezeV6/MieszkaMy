@@ -1,5 +1,3 @@
-from matplotlib.backend_tools import ToolQuit
-
 from source.database.db_init import db
 
 
@@ -13,4 +11,3 @@ class Inquiry(db.Model):
     phone = db.Column(db.String(50), nullable=False)
     message = db.Column(db.Text, nullable=True)
     property_id = db.Column(db.Integer, db.ForeignKey('properties.property_id'), nullable=True)
-

@@ -57,13 +57,12 @@ def signup(property_id):
         db.session.commit()
 
         flash('Thank you for signing up! An agent will contact you soon.', 'success')
-        return redirect(url_for('home')) # TODO zmienic to na confirm
+        return redirect(url_for('home')) # zmienic to na confirm
 
     return render_template('signup.html', property_id=property_id)
 
 
-# TODO: dodac signup confirm page, jak jest zwrotka 200
+# dodac signup confirm page, jak jest zwrotka 200
 @app.route('/signup/confirm')
 def confirm():
     return render_template('signup_confirm.html')
-
