@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
-from sqlalchemy.sql.sqltypes import NULLTYPE
 
 from source.database.db_init import db
 from source.models.Property import Property
