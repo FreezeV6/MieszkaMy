@@ -42,7 +42,7 @@ def increment_hit_counter(property_id):
 
 
 # Signup form route (property_id is optional)
-@app.route('/signup', defaults={'property_id': NULLTYPE}, methods=['GET', 'POST'])
+@app.route('/signup', defaults={'property_id': None}, methods=['GET', 'POST'])
 @app.route('/signup/<int:property_id>', methods=['GET', 'POST'])
 def signup(property_id):
     property_id = request.form.get('property_id') or property_id
@@ -54,7 +54,14 @@ def signup(property_id):
         message = request.form['message']
 
         # Save inquiry to the database with or without property_id
-        new_inquiry = Inquiry(name=name, surname=surname, email=email, phone=phone, message=message, property_id=property_id)
+        new_inquiry = Inquiry(
+            name=name,
+            surname=surname,
+            email=email,
+            phone=phone,
+            message=message,
+            property_id=property_id if property_id is not None else None
+        )
         db.session.add(new_inquiry)
         db.session.commit()
 
