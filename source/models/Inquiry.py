@@ -10,4 +10,4 @@ class Inquiry(db.Model):
     email = db.Column(db.String(100), nullable=False)
     phone = db.Column(db.String(50), nullable=False)
     message = db.Column(db.Text, nullable=True)
-    property_id = db.Column(db.Integer, db.ForeignKey('properties.property_id'), nullable=True)
+    property_id = db.Column(db.Integer, nullable=True)
