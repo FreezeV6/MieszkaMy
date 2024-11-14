@@ -44,7 +44,18 @@ def increment_hit_counter(property_id):
 @app.route('/signup', defaults={'property_id': None}, methods=['GET', 'POST'])
 @app.route('/signup/<int:property_id>', methods=['GET', 'POST'])
 def signup(property_id):
-    property_id = request.form.get('property_id') or property_id
+    # Retrieve property_id from form data if available, and convert it to an integer or set to None
+    form_property_id = request.form.get('property_id')
+    if form_property_id and form_property_id.strip() != "NULL":
+        try:
+            property_id = int(form_property_id)
+        except ValueError:
+            property_id = None
+    else:
+        property_id = None
+
+    print("Server Debug - property_id:", property_id, "Type:", type(property_id))
+
     if request.method == 'POST':
         name = request.form['name']
         surname = request.form['surname']
@@ -52,20 +63,21 @@ def signup(property_id):
         phone = request.form['phone']
         message = request.form['message']
 
-        # Save inquiry to the database with or without property_id
+        # Create the Inquiry object, passing property_id as None if not set
         new_inquiry = Inquiry(
             name=name,
             surname=surname,
             email=email,
             phone=phone,
             message=message,
-            property_id=property_id if property_id is not None else None
+            property_id=property_id  # This will be None if not provided
         )
+
         db.session.add(new_inquiry)
         db.session.commit()
 
         flash('Thank you for signing up! An agent will contact you soon.', 'success')
-        return redirect(url_for('home')) # zmienic to na confirm
+        return redirect(url_for('home'))  # Change to 'confirm' if needed
 
     return render_template('signup.html', property_id=property_id)
 
