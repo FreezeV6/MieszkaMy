@@ -40,21 +40,18 @@ def increment_hit_counter(property_id):
     return redirect(url_for('property_detail', property_id=property_id))
 
 
-# Signup form route (property_id is optional)
 @app.route('/signup', defaults={'property_id': None}, methods=['GET', 'POST'])
 @app.route('/signup/<int:property_id>', methods=['GET', 'POST'])
 def signup(property_id):
-    # Retrieve property_id from form data if available, and convert it to an integer or set to None
+    # Get `property_id` from the form if provided; otherwise, use the URL parameter
     form_property_id = request.form.get('property_id')
-    if form_property_id and form_property_id.strip() != "NULL":
+    if form_property_id:
         try:
-            property_id = int(form_property_id)
+            property_id = int(form_property_id)  # Convert form value to integer
         except ValueError:
-            property_id = None
-    else:
-        property_id = None
+            property_id = None  # Set to None if invalid
 
-    print("Server Debug - property_id:", property_id, "Type:", type(property_id))
+    print("Debug - Final property_id:", property_id, "Type:", type(property_id))
 
     if request.method == 'POST':
         name = request.form['name']
@@ -63,21 +60,21 @@ def signup(property_id):
         phone = request.form['phone']
         message = request.form['message']
 
-        # Create the Inquiry object, passing property_id as None if not set
+        # Create Inquiry object
         new_inquiry = Inquiry(
             name=name,
             surname=surname,
             email=email,
             phone=phone,
             message=message,
-            property_id=property_id  # This will be None if not provided
+            property_id=property_id  # Pass the processed property_id
         )
 
         db.session.add(new_inquiry)
         db.session.commit()
 
         flash('Thank you for signing up! An agent will contact you soon.', 'success')
-        return redirect(url_for('home'))  # Change to 'confirm' if needed
+        return redirect(url_for('home'))
 
     return render_template('signup.html', property_id=property_id)
 
