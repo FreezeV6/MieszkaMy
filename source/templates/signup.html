@@ -1,4 +1,5 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %}
+{% block content %}
 <body>
   <div class="container">
     <div class="image-container">
@@ -10,9 +11,13 @@
     <div class="about">
       <div>
         <p class="title">KONTAKT</p>
-        <p class="contact-description">Skontaktuj się z nami, a my niezwłocznie odpowiemy i umówimy dogodny termin wizyty.</p>
-        <form action="{{ url_for('signup', property_id=property.property_id if property else None) }}" method="post">
-          <input type="hidden" name="property_id" value="{{ property_id or None }}">
+        <p class="contact-description">
+          Skontaktuj się z nami, a my niezwłocznie odpowiemy i umówimy dogodny termin wizyty.
+        </p>
+        <form action="{{ url_for('signup') }}" method="post">
+          {% if property_id is not none %}
+          <input type="hidden" name="property_id" value="{{ property_id }}">
+          {% endif %}
           <div class="form-group">
             <input
               type="text"
@@ -21,7 +26,7 @@
               placeholder="Imię"
               required
             />
-             <input
+            <input
               type="text"
               id="surname"
               name="surname"
@@ -38,7 +43,6 @@
               placeholder="E-mail"
               required
             />
-
             <input
               type="text"
               id="phone"
@@ -46,7 +50,6 @@
               placeholder="Telefon"
               required
             />
-
           </div>
 
           <div class="form-group">
