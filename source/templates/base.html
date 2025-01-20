@@ -1,25 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Real Estate Agency</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='fonts.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <link rel="stylesheet" href="https://unpkg.com/ionicons@5.5.2/dist/ionicons.css">
-
-    
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='fonts.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/ionicons@5.5.2/dist/ionicons.css"
+    />
+  </head>
+  <body>
     <header>
-        <div class="company-name">MieszkaMy</div>
-        <nav>
-            <a href="{{ url_for('home') }}">NIERUCHOMOŚCI</a>
-            <a href="{{ url_for('signup') }}">KONTAKT</a>
-        </nav>
+      <div class="company-name">
+        <span class="mieszka">Mieszka</span><span class="my">My</span>
+        <a href="{{ url_for('home')}}">
+      </div>
+      <nav>
+        <a href="{{ url_for('home') }}">NIERUCHOMOŚCI</a>
+        <a href="{{ url_for('signup') }}">KONTAKT</a>
+      </nav>
     </header>
-    <main>
-        {% block content %}{% endblock %}
-    </main>
-</body>
+    <main>{% block content %}{% endblock %}</main>
+  </body>
 </html>
