@@ -8,12 +8,12 @@
             <img src="../static/images/kam-idris-_HqHX3LBN18-unsplash.jpg" alt="pomieszczenie">
         </div>
         <div class="about">
-            <div>
+            <div class="about-extend">
             <p class="title">{{ property.title }}</p>
             <p class="location-description">{{ property.prop_location }}</p>
             <p class="area-description">{{ property.property_area }} m²</p>
-            </div>
             <p class="description">{{ property.description }}</p>
+            </div>
             <div>
             <p class="price-description"><strong>{{ property.price }}</strong> /miesięcznie</p>
             <a href="{{ url_for('signup', property_id = property.property_id) }}" class="button-description">SKONTAKTUJ SIĘ Z NAMI</a>

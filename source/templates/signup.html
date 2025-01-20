@@ -1,5 +1,4 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "base.html" %} {% block content %}
 <body>
   <div class="container">
     <div class="image-container">
@@ -12,56 +11,57 @@
       <div>
         <p class="title">KONTAKT</p>
         <p class="contact-description">
-          Skontaktuj się z nami, a my niezwłocznie odpowiemy i umówimy dogodny termin wizyty.
+          Skontaktuj się z nami, a my niezwłocznie odpowiemy i umówimy dogodny
+          termin wizyty.
         </p>
-        <form action="{{ url_for('signup') }}" method="post">
-          {% if property_id is not none %}
-          <input type="hidden" name="property_id" value="{{ property_id }}">
-          {% endif %}
-          <div class="form-group">
-            <input
-              type="text"
-              id="name"
-              name="name"
-              placeholder="Imię"
-              required
-            />
-            <input
-              type="text"
-              id="surname"
-              name="surname"
-              placeholder="Nazwisko"
-              required
-            />
-          </div>
-
-          <div class="form-group">
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="E-mail"
-              required
-            />
-            <input
-              type="text"
-              id="phone"
-              name="phone"
-              placeholder="Telefon"
-              required
-            />
-          </div>
-
-          <div class="form-group">
-            <textarea
-              id="message"
-              name="message"
-              placeholder="Wiadomość"
-            ></textarea>
-          </div>
-          <button type="submit">WYŚLIJ WIADOMOŚĆ</button>
-        </form>
       </div>
+      <form action="{{ url_for('signup') }}" method="post">
+        {% if property_id is not none %}
+        <input type="hidden" name="property_id" value="{{ property_id }}" />
+        {% endif %}
+        <div class="form-group">
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Imię"
+            required
+          />
+          <input
+            type="text"
+            id="surname"
+            name="surname"
+            placeholder="Nazwisko"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="E-mail"
+            required
+          />
+          <input
+            type="text"
+            id="phone"
+            name="phone"
+            placeholder="Telefon"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <textarea
+            id="message"
+            name="message"
+            placeholder="Wiadomość"
+          ></textarea>
+        </div>
+        <button type="submit">WYŚLIJ WIADOMOŚĆ</button>
+      </form>
     </div>
   </div>
 </body>

@@ -12,8 +12,8 @@ header {
     height: 80px;
     background-color: var(--primary-color);
     color: var(--base100);
-    padding-left: 147px;
-    padding-right: 147px;
+    padding-left: 64px;
+    padding-right: 64px;
     margin: 0;
     text-align: left;
     display: flex;
@@ -27,11 +27,24 @@ main {
     margin: 0; 
 }
 .company-name {
-    font-family: 'Merriweather', serif;
-    font-weight: 100;
+    font-weight: 400;
+    font-style: normal;
     font-size: 32px;
     color: var(--base100);
     margin: 0;
+  }
+  
+  .mieszka {
+    font-family: 'Zilla Slab', serif;
+  }
+  
+  .my {
+    font-family: 'Zilla Slab Highlight', serif;
+  }
+
+a {
+    text-decoration: none;
+    color: var(--base100);
 }
 
 nav a {
@@ -45,18 +58,21 @@ nav a {
 
 .property-list {
     margin-top: 48px;
-    justify-content: center;
     display: flex;
+    justify-content: center; /* Ustawia listę na środku */
     flex-wrap: wrap;
     gap: 64px;
+
 }
+
+
 h1 {
-    /* font-family: 'Varela' ,sans-serif; */
-    font-family: 'Merriweather', serif;
+    font-family: 'Zilla Slab', serif;
     font-weight:200;
     font-size: 40px;
+    color: var(--secondary-color);
     margin-top: 72px;
-    margin-left: 83px;
+    /* margin-left: 83px; */
 }
 h2{
     font-family: 'Inter' ,sans-serif;
@@ -80,9 +96,7 @@ p {
     height: 452px;
     margin: 0;
     padding: 0;
-    /* border: 1px solid #ddd; */
     border-radius: 16px;
-    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
     box-shadow: 0px 190px 76px rgba(0, 0, 0, 0.01), 0px 107px 64px rgba(0, 0, 0, 0.05), 0px 47px 47px rgba(0, 0, 0, 0.09), 0px 12px 26px rgba(0, 0, 0, 0.1);
     overflow: hidden;
 }
@@ -205,10 +219,12 @@ label, input, textarea, button {
 /* PROPERTY.HTML */
 .container {
     display: flex;
-    flex-direction: row;
+    flex-direction: row; 
     gap: 56px;
-    align-items: center;
+    align-items: flex-start; 
     margin-top: 48px;
+    flex-wrap: nowrap; 
+
 }
 
 .image-container {
@@ -218,24 +234,44 @@ label, input, textarea, button {
     height: 600px;
     border-radius: 24px;
 }
+
 .image-container img {
-    width: 100%; 
-    height: auto; 
-    display: block; 
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
+/* Media query dla małych ekranów */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; 
+        align-items: center; 
+    }
+
+    .image-container {
+        width: 100%; 
+        height: auto; 
+    }
+}
 .about {
     width: 550px;
     height: 600px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: flex-start;
 
+}
+
+.about-extend{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .title {
 
-    font-family: 'Inter' ,sans-serif;
+    font-family: 'Zilla Slab', serif;   
     font-weight:500;
     font-size: 48px;
     text-decoration: none;
@@ -251,7 +287,7 @@ label, input, textarea, button {
     text-decoration: none;
     text-transform: uppercase;
     color: var(--base800);
-    margin-top: 32px;
+    margin-top: 24px;
 }
 
 .area-description{
@@ -261,16 +297,16 @@ label, input, textarea, button {
     text-decoration: none;
     color: var(--base500);
     margin-top: 8px;
+
 }
 
 .description{
-    height: 200px;
     font-family: 'Inter' ,sans-serif;
     font-weight:400;
     font-size: 16px;
     text-decoration: none;
     color: var(--base600);
-    margin-top: 32px;
+    margin-top: 24px;
 
 }
 
@@ -280,7 +316,7 @@ label, input, textarea, button {
     font-size: 24px;
     text-decoration: none;
     color: var(--base600);
-    margin-top: 40px;
+
 }
 
 strong{
@@ -311,9 +347,12 @@ strong{
 /* SIGNUP */
 
 form {
-    max-width: 550px; 
-    margin-top: 32px; 
-    padding: 0; 
+    max-width: 600px; 
+    flex: 1; /* Zapewnia, że formularz również zajmuje całą przestrzeń */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Form z przyciskiem na dole */
+    
   }
   
 .form-group {
@@ -327,7 +366,7 @@ form {
   
   input {
     flex-grow: 1; 
-    width: 200px;
+    max-width: 200px;
     border-radius: 16px;
     border: 2px solid var(--base300);
     padding: 12px;
@@ -378,7 +417,7 @@ form {
     border: none;
     text-align: center;
     text-decoration: none;
-    margin-top: 40px;
+    margin-top: 16px;
     cursor: pointer;
 }
 
