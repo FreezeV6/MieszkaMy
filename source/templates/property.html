@@ -5,7 +5,7 @@
     <div class="container">
         <div class="image-container">
          <!-- Poglądowo wstawione na sztywno -->
-            <img src="../static/images/kam-idris-_HqHX3LBN18-unsplash.jpg" alt="pomieszczenie">
+            <img src="{{ url_for('static', filename='images/' + property.image) }}" alt="{{ property.title }}">
         </div>
         <div class="about">
             <div class="about-extend">
