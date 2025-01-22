@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
-from flask_mail import Mail, Message
+from flask_mail import Mail #Message
 
 from source.database.db_init import db
 from source.models.Property import Property
