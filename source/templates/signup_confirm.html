@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block content %}
+        <div class="signup-confirm">
+            <h1>Dziękujemy za rejestrację ❤</h1>
+            <h3>Skontaktujemy się z Tobą wkrótce!</h3>
+            <a href="{{ url_for('home') }}" class="button-signup">Powrót na stronę główną</a>
+        </div>
+{% endblock %}

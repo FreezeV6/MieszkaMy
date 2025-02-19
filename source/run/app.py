@@ -102,12 +102,11 @@ def signup(property_id):
         #     print(f"Email error: {e}")
 
         flash('Thank you for signing up! An agent will contact you soon.', 'success')
-        return redirect(url_for('home'))
+        return redirect(url_for('confirm'))
 
     return render_template('signup.html', property_id=property_id)
 
 
-# dodac signup confirm page, jak jest zwrotka 200
 @app.route('/signup/confirm')
 def confirm():
     return render_template('signup_confirm.html')
