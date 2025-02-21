@@ -1,26 +1,16 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
-from flask_mail import Mail #Message
 
 from source.database.db_init import db
 from source.models.Property import Property
 from source.models.Inquiry import Inquiry
 from source.utils.consts import TEMPLATE_DIR, STATIC_DIR, DB_PATH, KEY
+from source.send_mail.setup_mail import setup_send_mail
 
 app = Flask(__name__, template_folder=TEMPLATE_DIR, static_folder=STATIC_DIR)
 app.secret_key = KEY
 
 app.config['SQLALCHEMY_DATABASE_URI'] = DB_PATH
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-app.config['MAIL_SERVER'] = 'smtp.mailgun.org'
-app.config['MAIL_PORT'] = 587
-app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'postmaster@sandbox4b0e6d03bbf7457a9413546799aa9cd1.mailgun.org'
-app.config['MAIL_PASSWORD'] = '4726a6ddadd1d0164b47075c32dedce0-c02fd0ba-e7eb0e92'
-app.config['MAIL_DEFAULT_SENDER'] = 'mieszkamy@sandbox4b0e6d03bbf7457a9413546799aa9cd1.mailgun.org '
-
-mail = Mail(app)
-
 
 db.init_app(app)
 
@@ -69,9 +59,9 @@ def signup(property_id):
         message = request.form['message']
 
         new_inquiry = Inquiry(
-            name=name,
-            surname=surname,
-            email=email,
+            name=name.lower().capitalize(),
+            surname=surname.lower().capitalize(),
+            email=email.lower(),
             phone=phone,
             message=message,
             property_id=property_id
@@ -80,26 +70,7 @@ def signup(property_id):
         db.session.add(new_inquiry)
         db.session.commit()
 
-        # Send email to agent
-        # agent_email = "jakismail@dodac.trzeba"
-        # email_subject = "New Client Signup"
-        # email_body = f"""
-        # A new client has signed up:
-        # Name: {name} {surname}
-        # Email: {email}
-        # Phone: {phone}
-        # Message: {message}
-        # Property: {property_id}
-        # """
-        #
-        # msg = Message(email_subject, recipients=[agent_email])
-        # msg.body = email_body
-        #
-        # try:
-        #     mail.send(msg)
-        # except Exception as e:
-        #     flash('Signup successful, but failed to send email to the agent.', 'error')
-        #     print(f"Email error: {e}")
+        setup_send_mail(name=name, surname=surname, email=email)
 
         flash('Thank you for signing up! An agent will contact you soon.', 'success')
         return redirect(url_for('confirm'))
